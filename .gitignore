@@ -1,0 +1,7 @@
+/dist/
+/terraform-provider-caltra
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+/provider-dependencies.json
