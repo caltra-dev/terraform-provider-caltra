@@ -1,10 +1,6 @@
 version: 2
 project_name: terraform-provider-caltra
 
-before:
-  hooks:
-    - sh -c 'go list -m -json=Path,Version,Sum all > provider-dependencies.json'
-
 builds:
   - binary: '{{ .ProjectName }}_v{{ .Version }}'
     env:
@@ -27,8 +23,6 @@ checksum:
   extra_files:
     - glob: terraform-registry-manifest.json
       name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
-    - glob: provider-dependencies.json
-      name_template: '{{ .ProjectName }}_{{ .Version }}_dependencies.json'
 
 signs:
   - artifacts: checksum
@@ -45,5 +39,3 @@ release:
   extra_files:
     - glob: terraform-registry-manifest.json
       name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
-    - glob: provider-dependencies.json
-      name_template: '{{ .ProjectName }}_{{ .Version }}_dependencies.json'
